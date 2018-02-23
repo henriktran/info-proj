@@ -1,6 +1,11 @@
 body {
-    margin: 40px;
     background-color: white;
+    font-family: 'Lato', sans-serif;
+    color: black;
+}
+#header {
+  text-align: center;
+  background: white;
 }
 
 #poster {
@@ -10,9 +15,7 @@ body {
 }
 
 .box {
-    background-color: lavender;
-    border-radius: 5px;
-    padding: 25px;
+    background-color: rgb(166, 196, 255);
 }
 
 .header {
@@ -20,9 +23,20 @@ body {
     grid-column: 1/ last;
 }
 
-.footer {
+.regular {
     text-align: center;
     grid-column: 1/ last;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 svg {
@@ -32,16 +46,4 @@ svg {
 
 .dimple-line {
     stroke: red !important;
-}
-
-.left {
-    grid-column: 1;
-}
-
-.right {
-    grid-column: 2;
-}
-
-h3 {
-    font-family: 'Roboto', sans-serif;
 }

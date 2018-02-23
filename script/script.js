@@ -1,11 +1,8 @@
-const d3 = window.d3;
-const dimple = window.dimple;
 // Global variables
-// Global variables
-// Global variables
+// These are used for D3 graphs axises
 loadedData = false;
-domainX = [50, 75];
-domainY = [0, 13];
+domainX = [50, 85];
+domainY = [0, 5];
 
 var d3Update = false;
 
@@ -20,6 +17,26 @@ function drawD3Plot() {
         .attr("width", width)
         .attr("height", height);
 
+
+        // NAME THE DIFFERENT AXISES
+      svg.append("text")
+        .attr("class", "x label")
+        .attr("text-anchor", "end")
+        .attr("x", width/2)
+        .attr("y", height - 10)
+        .text("Temperature");
+
+        // y-axis name
+        svg.append("text")
+            .attr("class", "y label")
+            .attr("text-anchor", "end")
+            .attr("y", 1)
+            .attr("x", -height/3)
+            .attr("dy", ".75em")
+            .attr("transform", "rotate(-90)")
+            .text("Erosio Incidents");
+
+
     // Get actual width
     width = svg.node().getBoundingClientRect().width;
 
@@ -27,25 +44,26 @@ function drawD3Plot() {
     var y = d3.scaleLinear().domain(domainY).range([height - yoffs, 20]);
 
     var linedata = d3.line()
-        .x(function (d) { return x(d["Temperature F"]); })
-        .y(function (d) { return y(d["Damage index"]); });
+        .x(function (d) { return x(d["Temperature F"]) })
+        .y(function (d) { return y(d["Erosion incidents"]) });
 
     // Add axes first to show plots on top
     var x_axis = svg.append("g")
         .classed("x axis", true)
-        .attr("transform", function () { return "translate(0," + y.range()[0] + ")"; });
+        .attr("transform", function () { return "translate(0," + y.range()[0] + ")" });
 
     var y_axis = svg.append("g")
         .classed("y axis", true)
-        .attr("transform", function () { return "translate(" + x.range()[0] + ",0)"; });
+        .attr("transform", function () { return "translate(" + x.range()[0] + ",0)" });
 
     // Add line first to show markers on top
     var line_path = svg.append("path")
         .data([loadedData])
         .classed("line", true)
         .attr("fill", "none")
-        .attr("stroke", "slategray")
-        .attr("stroke-width", "2px");
+        .style("opacity", .8)
+        .attr("stroke", "rgb(7, 36, 18)")
+        .attr("stroke-width", "1px");
 
     // Initial setup done - actual binding to data is done in update()!
 
@@ -54,7 +72,7 @@ function drawD3Plot() {
         // Sort the data to make the line work right
         loadedData.sort(function (x1, x2) {
             return d3.ascending(x1["Temperature F"], x2["Temperature F"]);
-        });
+        })
 
         line_path.data([loadedData]);
 
@@ -73,8 +91,10 @@ function drawD3Plot() {
             .append("g")
             .classed("marker", true);
 
+
+        // CHANGE THESE TO CHANGE DATA IN PLOT
         function marker_translation(d) {
-            return "translate(" + x(d["Temperature F"]) + ", " + y(d["Damage index"]) + ")";
+            return "translate(" + x(d["Temperature F"]) + ", " + y(d["Erosion incidents"]) + ")";
         }
 
         new_markers.attr("transform", marker_translation);
@@ -82,11 +102,10 @@ function drawD3Plot() {
         markers.transition().attr("transform", marker_translation);
 
         new_markers.append("circle")
-            .attr("r", 6)
-            .attr("fill", "lavender")
-            .attr("stroke", "slategray")
-	    .attr("stroke-width", 2);
-
+            .attr("r", 10)
+            .style("opacity", .9)
+            .attr("fill", "MediumSeaGreen")
+            .attr("stroke", "rgb(7, 36, 18)");
     }
 
     // Call update to make inital data binding
@@ -97,90 +116,83 @@ function drawD3Plot() {
     return update;
 }
 
+function d3RandomizeData() {
+    var randomIndex = Math.floor(Math.random() * loadedData.length);
+    loadedData[randomIndex]["Erosion incidents"] = Math.random() * 5;
+    loadedData[randomIndex]["Temperature F"] = 50 + Math.random() * 35;
+    if (randomIndex < 4) {
+        loadedData.push(loadedData[randomIndex]);
+    }
+    if (randomIndex > 6) {
+        loadedData.splice(randomIndex, 1);
+    }
+
+    if (d3Update) {
+        d3Update();
+    }
+}
+
+function d3RandomZoom() {
+    if (d3Update) {
+        domainX = [Math.random() * 70, 85];
+        domainY = [0, 5 + Math.random() * 10];
+        d3Update();
+    }
+}
+
+function d3ResetZoom() {
+    if (d3Update) {
+        domainX = [50, 85];
+        domainY = [0, 5];
+        d3Update();
+    }
+}
+
 var dimpleChart = false;
 
-function drawDimplePlot() {
-    var height = 300, width = 600;
-
-    //Create SVG
-    var dimpleSvg = dimple.newSvg("#dimpleContainer", width, height);
-
-    dimpleChart = new dimple.chart(dimpleSvg, loadedData);
-    dimpleChart.setMargins(50, 40, 20, 50);
-    var x = dimpleChart.addMeasureAxis("x", "Temperature F");
-    x.overrideMin = 52;
-    x.overrideMax = 75;
-    var y = dimpleChart.addMeasureAxis("y", "Erosion incidents");
-    y.overrideMax = 8;
-    var line = dimpleChart.addSeries(["Flight", "Shuttle"], dimple.plot.line);
-    line.lineWeight = 1;
-    dimpleChart.addSeries(["Erosion incidents", "Flight"], dimple.plot.bubble);
-    dimpleChart.draw();
+function drawDimplePlot(data) {
+  var svg = dimple.newSvg("#dimpleContainer", 590, 400);
+  var dimpleChart = new dimple.chart(svg, data);
+  dimpleChart.setBounds(20, 20, 300, 360)
+  dimpleChart.addMeasureAxis("p", "Damage index");
+  var innerRing = dimpleChart.addSeries("Flight", dimple.plot.pie);
+  // Negatives are calculated from outside edge, positives from center
+  innerRing.outerRadius = "-26px";
+  innerRing.innerRadius = "-50px";
+  dimpleChart.addLegend(300, 20, 90, 300, "right");
+  dimpleChart.draw();
 }
 
-var dimpleChart2 = false;
+function drawDimplePlot2(data) {
 
-function drawDimplePlot2() {
-    var height = 300, width = 600;
+  var svg = dimple.newSvg("#dimpleContainer2", 590, 400);
+  var dimpleChart = new dimple.chart(svg, data);
+  dimpleChart.setBounds(65, 30, 505, 305);
+  var x = dimpleChart.addCategoryAxis("x", "Date");
+  x.addOrderRule("Date");
+  var y = dimpleChart.addMeasureAxis("y", "Temperature F");
+  dimpleChart.addSeries(null, dimple.plot.area);
+  dimpleChart.addLegend("2%", 10, "96%", 30, "right");
+  dimpleChart.defaultColors = [
+  	new dimple.color("#FF0000", "Blue"), // Set a red fill with a blue stroke
+  ];
+  dimpleChart.draw();
 
-    //Create SVG
-    var dimpleSvg = dimple.newSvg("#dimpleContainer2", width, height);
-
-    dimpleChart2 = new dimple.chart(dimpleSvg, loadedData);
-    dimpleChart2.setMargins(50, 20, 20, 50);
-    var x = dimpleChart2.addCategoryAxis("x", "Flight");
-    x.addOrderRule("Flight");
-    var y = dimpleChart2.addMeasureAxis("y", "Erosion incidents");
-    y.overrideMax = 4;
-    var series = dimpleChart2.addSeries(["Erosion incidents", "Flight"], dimple.plot.bar);
-    dimpleChart2.draw();
 }
 
-function dimpleZoomReset() {
-    dimpleChart.axes[0].overrideMin = 52;
-    dimpleChart.axes[0].overrideMax = 75;
-    dimpleChart.axes[1].overrideMin = 0;
-    dimpleChart.axes[1].overrideMax = 8;
-    dimpleChart.draw(1000);
-}
-
-function dimpleZoomLeft() {
-    dimpleChart.axes[0].overrideMax -= 4;
-    dimpleChart.axes[1].overrideMax -= 1;
-    dimpleChart.draw(750);
-}
-
-
-function dimpleZoomRight() {
-    dimpleChart.axes[0].overrideMin += 4;
-    dimpleChart.axes[1].overrideMax -= 1;
-    dimpleChart.draw(750);
-}
-function dimpleFilter() {
-    dimpleChart2.data = dimple.filterData(loadedData,"Erosion incidents",["1", "3"]);
-    dimpleChart2.draw(1000,false);
-}
-
-function dimpleOrder() {
-    dimpleChart2.axes[0]._orderRules[0] = "Temperature";
-    dimpleChart2.draw(1000, false);
-}
-
-
-var damaged_csv = "https://dl.dropbox.com/s/mfourrx8w6fd4hx/ex2_temps_below_70.csv?dl=0";
+var damaged_csv = "https://dl.dropbox.com/s/7koek9msjpybdgq/infovisdata.csv?dl=0";
 
 d3.csv(damaged_csv, function (data) {
     data.forEach(function (d) {
-        d["Temperature F"] = +d["Temperature F"];
-        d["Damage index"] = +d["Damage index"];
-	d["Erosion incidents"] = +d["Erosion incidents"];
+        d["Erosion Incidents"] = +d["Erosion Incidents"];
+        d["Temperature"] = +d["Temperature"];
+        d["Shuttle"] = "Challenger";
     });
     loadedData = data;
 
-    d3Update = drawD3Plot();
-    // d3Update now is update function - called as d3Update()
+    d3Update = drawD3Plot(data);
 
-    drawDimplePlot();
+    drawDimplePlot(data);
 
-    drawDimplePlot2();
+    drawDimplePlot2(data);
 });
