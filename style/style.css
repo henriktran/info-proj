@@ -43,6 +43,11 @@ body {
     clear: both;
 }
 
+.three_col {
+  float: left;
+  width: 33%;
+}
+
 svg {
     width: 100%;
     border: dashed 1px;
