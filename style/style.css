@@ -9,9 +9,13 @@ body {
 }
 
 #poster {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: 1fr 1fr [last];
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr [last];
+}
+
+#stats {
+  background-color: rgb(236, 83, 236);
 }
 
 .box {
