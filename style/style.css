@@ -1,11 +1,22 @@
 body {
     background-color: white;
     font-family: 'Lato', sans-serif;
-    color: black;
+    color: rgb(46, 46, 46);
+    margin: 0px;
 }
 #header {
   text-align: center;
   background: white;
+}
+
+#sepLine {
+  border: 0;
+  height: 1.65px;
+  width: 85%;
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
 }
 
 #poster {
@@ -15,7 +26,7 @@ body {
 }
 
 #stats {
-  background-color: rgb(236, 83, 236);
+  background-color: rgba(236, 83, 236, 0.85);
 }
 
 .box {
@@ -44,8 +55,14 @@ body {
 }
 
 .three_col {
+  padding-top: 15px;
   float: left;
   width: 33%;
+}
+
+.numberText {
+  font-size: 25px;
+  margin-top: -10px;
 }
 
 svg {
