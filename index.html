@@ -1,56 +1,95 @@
 <html>
 
-<head>
-  <link rel="stylesheet" href="style/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-</head>
+    <head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    </head>
 
-<body>
-  <div id="poster">
+    <body>
+	<div id="poster">
 
-    <div id="header" class="box header">
-      <h1>Data Security Breaches In US Health Care</h1>
-      <hr id="sepLine" />
-    </div>
+	    <div id="header" class="box header">
+		<h1>Data Security Breaches In US Health Care</h1>
+		<hr id="sepLine" />
+	    </div>
 
-    <div id="stats" class="box regular">
-      <div class="three_col">
-        <img src="images/placeholder_thief.png" width="100px">
-        <p>Thefts</p>
-        <p class="numberText" id="thefts">40</p>
-      </div>
-      <div class="three_col">
-        <img src="images/placeholder_thief.png" width="100px">
-        <p>Hacking/IT Incidents</p>
-        <p class="numberText" id="hacking_incidents">40</p>
-      </div>
-      <div class="three_col">
-        <img src="images/placeholder_thief.png" width="100px">
-        <p>Others</p>
-        <p class="numberText" id="others">40</p>
-      </div>
-    </div>
+	    <div id="stats" class="box regular">
+		<div class="three_col">
+		    <img src="images/placeholder_thief.png" width="100px">
+		    <p>Thefts</p>
+		    <p class="numberText" id="thefts">40</p>
+		</div>
+		<div class="three_col">
+		    <img src="images/placeholder_thief.png" width="100px">
+		    <p>Hacking/IT Incidents</p>
+		    <p class="numberText" id="hacking_incidents">40</p>
+		</div>
+		<div class="three_col">
+		    <img src="images/placeholder_thief.png" width="100px">
+		    <p>Others</p>
+		    <p class="numberText" id="others">40</p>
+		</div>
+	    </div>
 
-    <div class="box regular">
-      <h2>Number of breaches per state from 2009 to 2013</h2>
-      <div id="dimpleContainer"></div>
-    </div>
-    <div class="box regular">
-      <h2>Types of attacks in relation to affected people</h2>
-      <div class="column">
-        <h3>Diagram</h3>
-      </div>
-      <div class="column">
-        <h3>Linechart</h3>
-      </div>
-    </div>
+	    <div class="box regular">
+		<h2>Number of breaches per state from 2009 to 2013</h2>
+		<div id="statesContainer">
+		    <div id="tooltip"></div><!-- div to hold tooltip. -->
+		    <svg width="960" height="600" id="statesvg" ></svg> <!-- svg to hold the map. -->
+		</div>
+	    </div>
+	    <div class="box regular">
+		<h2>Types of attacks in relation to affected people</h2>
+		<div class="column">
+		    <h3>Diagram</h3>
+		</div>
+		<div class="column">
+		    <h3>Linechart</h3>
+		</div>
+	    </div>
 
-  </div>
-  </div>
+	</div>
+	</div>
 
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.min.js"></script>
-<script src="https://infovis.sjolie.se/js/dimple.v2.3.0.js"></script>
-<script src="script/script.js"></script>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+	<script src="https://infovis.sjolie.se/js/dimple.v2.3.0.js"></script>
+	<script src="script/script.js"></script>
+	<script src="script/uStates.js"></script>
+
+	<script>
+	 function tooltipHtml(n, d){	/* function to create html content string in tooltip div. */
+	     return "<h4>"+n+"</h4><table>"+
+		    "<tr><td>Test</td><td>"+(d.low)+"</td></tr>"+
+		    "<tr><td>Test</td><td>"+(d.avg)+"</td></tr>"+
+		    "<tr><td>Test</td><td>"+(d.high)+"</td></tr>"+
+		    "<tr><td>Test</td><td>"+(d.high)+"</td></tr>"+
+		    "<tr><td>Test</td><td>"+(d.high)+"</td></tr>"+
+		    "<tr><td>Test</td><td>"+(d.high)+"</td></tr>"+
+		    "<tr><td>Test</td><td>"+(d.high)+"</td></tr>"+
+		    "</table>";
+	 }
+
+	 var sampleData ={};	/* Sample random data. */
+	 ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
+	  "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH",
+	  "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT",
+	  "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN",
+	  "WI", "MO", "AR", "OK", "KS", "LA", "VA"]
+	     .forEach(function(d){
+		 var low=Math.round(100*Math.random()),
+		     mid=Math.round(100*Math.random()),
+		     high=Math.round(100*Math.random());
+		 sampleData[d]={low:d3.min([low,mid,high]), high:d3.max([low,mid,high]),
+				avg:Math.round((low+mid+high)/3), color:d3.interpolate("#ffffcc", "#800026")(low/100)};
+	     });
+
+	 /* draw states on id #statesvg */
+	 uStates.draw("#statesvg", sampleData, tooltipHtml);
+
+	 //d3.select(self.frameElement).style("height", "600px");
+	</script>
+
+    </body>
 </html>

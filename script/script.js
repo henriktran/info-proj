@@ -181,6 +181,7 @@ function drawDimplePlot2(data) {
 }
 
 var damaged_csv = "https://dl.dropbox.com/s/7koek9msjpybdgq/infovisdata.csv?dl=0";
+const stateCSV = "../data/breaches-ByState.csv";
 
 d3.csv(damaged_csv, function (data) {
     data.forEach(function (d) {
@@ -195,4 +196,7 @@ d3.csv(damaged_csv, function (data) {
     drawDimplePlot(data);
 
     drawDimplePlot2(data);
+
+
+
 });
