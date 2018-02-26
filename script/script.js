@@ -1,7 +1,6 @@
-function drawTheftsPlot(data) {
+function drawTheftsPlot() {
   var svg = dimple.newSvg("#theftsContainer", 590, 400);
-  d3.tsv("https://dl.dropbox.com/s/ti2w14jlyah54p7/Breaches_per_year%20-%20Blad1.tsv?dl=0", function (data) {
-    data = dimple.filterData(data, "Type_of_Breach", ["Theft", "Hacking/IT Incident"])
+  d3.tsv("https://dl.dropbox.com/s/9lq0tv2oj3af05q/Breaches_per_year%20-%20Blad1%20%281%29.tsv?dl=0", function (data) {
     var myChart = new dimple.chart(svg, data);
     myChart.setBounds(60, 30, 505, 305);
     var x = myChart.addCategoryAxis("x", "Year");
@@ -9,9 +8,6 @@ function drawTheftsPlot(data) {
     myChart.addMeasureAxis("y", "Incidents");
     myChart.addSeries("Type_of_Breach", dimple.plot.line);
     myChart.addLegend(60, 10, 500, 20, "right");
-
-    myChart.assignColor("Hacking/IT Incident", "blue");
-
     myChart.draw();
   });
 }
@@ -124,7 +120,7 @@ d3.csv(stateCSV, function(data) {
     }),
     loaded_stateData = data;
     uStates.draw("#statesvg", data, tooltipHtml);
-    drawTheftsPlot(data);
+    drawTheftsPlot();
 });
 // US state sins end here
 
