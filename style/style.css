@@ -90,10 +90,6 @@ svg {
     width: 100%;
 }
 
-.dimple-line {
-    stroke: red !important;
-}
-
 .numberText {
   font-size: 50px;
 }
