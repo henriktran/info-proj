@@ -2,10 +2,10 @@ body {
     background-color: #3AAFA9;
     font-family: 'Lato', sans-serif;
     color: rgb(46, 46, 46);
-    margin: 0px;
-    padding-left: 20vw;
-    padding-right: 20vw;
+	margin: 0px;
+	padding: 0 2rem;
 }
+
 #header {
   text-align: center;
   background: #3AAFA9;
