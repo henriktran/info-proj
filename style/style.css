@@ -1,36 +1,57 @@
 body {
-    background-color: white;
+    background-color: #3AAFA9;
     font-family: 'Lato', sans-serif;
     color: rgb(46, 46, 46);
     margin: 0px;
+    padding-left: 20vw;
+    padding-right: 20vw;
 }
 #header {
   text-align: center;
-  background: white;
+  background: #3AAFA9;
+  color: #1f3138;
+  font-size: 35px;
 }
 
 #sepLine {
   border: 0;
   height: 1.65px;
   width: 85%;
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -webkit-linear-gradient(left, #3AAFA9, #1f3138, #3AAFA9);
+  background-image: -moz-linear-gradient(left, #3AAFA9, #1f3138, #3AAFA9);
+  background-image: -ms-linear-gradient(left, #3AAFA9, #1f3138, #3AAFA9);
+  background-image: -o-linear-gradient(left, #3AAFA9, #1f3138, #3AAFA9);
 }
 
 #poster {
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 30px;
   grid-template-columns: 1fr 1fr [last];
 }
 
 #stats {
-  background-color: rgba(236, 83, 236, 0.85);
+  background-color: rgb(247, 247, 247);
+  color: #246563;
+  font-size: 28px;
 }
 
 .box {
-    background-color: rgb(166, 196, 255);
+    background-color: rgb(247, 247, 247);
+}
+
+.box1 {
+    background-color: rgb(247, 247, 247);
+    color: #246563;
+    font-size: 28px;
+    border-radius: 10px;
+    box-shadow: 0px 10px #2B7A78;
+}
+
+.box2 {
+    background-color: rgb(247, 247, 247);
+    color: #246563;
+    border-radius: 10px;
+    box-shadow: 0px 10px #2B7A78;
 }
 
 .header {
@@ -73,6 +94,9 @@ svg {
     stroke: red !important;
 }
 
+.numberText {
+  font-size: 50px;
+}
 
 /*State css */
 
