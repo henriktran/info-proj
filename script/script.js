@@ -127,3 +127,96 @@ d3.csv(stateCSV, function(data) {
     drawTheftsPlot(data);
 });
 // US state sins end here
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var sets = [
+        { sets: [0], label: "Desktop Computer",	size: 144 },
+        { sets: [1], label: "E-mail", size: 57 },
+        { sets: [2], label: "Electronic Medical Record", size: 36 },
+        { sets: [3], label: "Laptop", size: 244 },
+        { sets: [4], label: "Network Server", size: 125 },
+        { sets: [5], label: "Paper", size: 235 },
+        { sets: [6], label: "Other Portable Electronic Device",	size: 122 },
+        { sets: [7], label: "Other", size: 176 },
+
+        { sets: [0, 1],	size: 1 },
+        { sets: [0, 2],	size: 2 },
+        { sets: [0, 4],	size: 8 },
+        { sets: [0, 4, 1, 2, 5], size: 1 },
+        { sets: [0, 4, 2],	size: 1 },
+        { sets: [0, 4, 6, 7], size: 1 },
+        { sets: [0, 7],	size: 2 },
+        { sets: [0, 6],	size: 1 },
+        { sets: [0, 6, 7],	size: 1 },
+        { sets: [0, 5],	size: 4 },
+
+        { sets: [1, 7],	size: 1 },
+        { sets: [1, 6],	size: 2 },
+
+        { sets: [2, 5],	size: 3 },
+
+        { sets: [3, 0],	size: 7 },
+        { sets: [3, 0, 4, 1],	size: 6 },
+        { sets: [3, 0, 4, 1, 6, 7, 2],	size: 1 },
+        { sets: [3, 0, 4, 1, 6, 7, 2, 5],	size: 1 },
+        { sets: [3, 0, 6, 7],	size: 1 },
+        { sets: [3, 2],	size: 1 },
+        { sets: [3, 4],	size: 2 },
+        { sets: [3, 4, 1],	size: 1 },
+        { sets: [3, 6],	size: 7 },
+        { sets: [3, 6, 5],	size: 1 },
+        { sets: [3, 5],	size: 5 },
+
+        { sets: [4, 1],	size: 2 },
+        { sets: [4, 2],	size: 2 },
+        { sets: [4, 7],	size: 1 },
+
+        { sets: [6, 7],	size: 53 },
+        { sets: [6, 7, 2],	size: 2 },
+
+        { sets: [7, 2],	size: 1 },
+        { sets: [7, 5],	size: 4 },
+    ];
+
+    var chart = venn.VennDiagram();
+    var vennElem = d3.select('#venn');
+    vennElem.datum(sets).call(chart);
+
+    // add a tooltip
+    var tooltip = d3.select("body").append("div")
+        .attr("class", "venntooltip");
+
+    // add listeners to all the groups to display tooltip on mouseover
+    vennElem.selectAll("g")
+        .on("mouseover", function(d, i) {
+            // sort all the areas relative to the current item
+            venn.sortAreas(vennElem, d);
+
+            // Display a tooltip with the current size
+            tooltip.transition().duration(400).style("opacity", .9);
+            tooltip.text(d.size + " cases");
+
+            // highlight the current path
+            var selection = d3.select(this).transition("tooltip").duration(400);
+            selection.select("path")
+                .style("stroke-width", 3)
+                .style("fill-opacity", d.sets.length == 1 ? .4 : .1)
+                .style("stroke-opacity", 1);
+        })
+
+        .on("mousemove", function() {
+            tooltip.style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+        })
+
+        .on("mouseout", function(d, i) {
+            tooltip.transition().duration(400).style("opacity", 0);
+            var selection = d3.select(this).transition("tooltip").duration(400);
+            selection.select("path")
+                .style("stroke-width", 0)
+                .style("fill-opacity", d.sets.length == 1 ? .25 : .0)
+                .style("stroke-opacity", 0);
+        });
+});
