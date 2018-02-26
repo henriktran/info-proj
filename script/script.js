@@ -1,16 +1,37 @@
+var lineChart, test;
+var svgLine = dimple.newSvg("#theftsContainer", 590, 400);
+
 function drawTheftsPlot() {
-  var svg = dimple.newSvg("#theftsContainer", 590, 400);
   d3.tsv("https://dl.dropbox.com/s/9lq0tv2oj3af05q/Breaches_per_year%20-%20Blad1%20%281%29.tsv?dl=0", function (data) {
-    var myChart = new dimple.chart(svg, data);
-    myChart.setBounds(60, 30, 505, 305);
-    var x = myChart.addCategoryAxis("x", "Year");
+    lineChart = new dimple.chart(svgLine, data);
+    lineChart .setBounds(60, 30, 505, 305);
+    var x = lineChart.addCategoryAxis("x", "Year");
     x.addOrderRule("Date");
-    myChart.addMeasureAxis("y", "Incidents");
-    myChart.addSeries("Type_of_Breach", dimple.plot.line);
-    myChart.addLegend(60, 10, 500, 20, "right");
-    myChart.draw();
+    lineChart.addMeasureAxis("y", "Incidents");
+    lineChart.addSeries("Type_of_Breach", dimple.plot.line);
+    lineChart.addLegend(60, 10, 500, 20, "right");
+    lineChart.draw();
   });
 }
+
+function filterType(event) {
+    lineChart.svg.selectAll('*').remove();
+    d3.tsv("https://dl.dropbox.com/s/9lq0tv2oj3af05q/Breaches_per_year%20-%20Blad1%20%281%29.tsv?dl=0", function (data) {
+    if (event.target.value !== 'Type_of_Breach') {
+      data = dimple.filterData(data, "Type_of_Breach", event.target.value);
+    };
+    lineChart = new dimple.chart(svgLine, data);
+    lineChart.setBounds(60, 30, 505, 305);
+    var x = lineChart.addCategoryAxis("x", "Year");
+    x.addOrderRule("Date");
+    lineChart.addMeasureAxis("y", "Incidents");
+    lineChart.addSeries(event.target.value, dimple.plot.line);
+    lineChart.addLegend(60, 10, 500, 20, "right");
+    lineChart.draw(750);
+    });
+}
+
+document.querySelector("#type-filter").addEventListener('change', filterType);
 
 
 var damaged_csv = "https://dl.dropbox.com/s/7koek9msjpybdgq/infovisdata.csv?dl=0";
