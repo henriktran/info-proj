@@ -146,7 +146,8 @@ svg {
 
 	#statesContainer {
 	    display: inline-block;
-
+	    width: 100%;
+	    text-align: center;
 	}
 
 	/* end of state css */
