@@ -146,6 +146,23 @@ h3 {
   margin-right: 10px;
 }
 
+#theftsContainer {
+	margin-bottom: 20px;
+}
+
+.dimple-custom-axis-line {
+	stroke: #f7f7f7 !important;
+}
+
+.dimple-custom-axis-label,
+.dimple-custom-axis-title,
+.dimple-legend-text {
+	fill: #f7f7f7 !important;
+}
+
+.dimple-custom-gridline {
+	stroke: #444 !important;
+}
 
 /*State css */
 
