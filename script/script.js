@@ -1,5 +1,5 @@
 var lineChart, test;
-var svgLine = dimple.newSvg("#theftsContainer", 590, 400);
+var svgLine = dimple.newSvg("#theftsContainer", 590, 410);
 var timesec = 3000;
 
 $('#totalnr').animateNumber({ number: 977 }, timesec);
@@ -46,16 +46,25 @@ document.querySelector("#type-filter").addEventListener('change', filterType);
 
 
 function drawBarChart () {
-  var svg = dimple.newSvg("#barChartContainer", 590, 400);
+  var svg = dimple.newSvg("#barChartContainer", 590, 500);
    d3.tsv("https://dl.dropbox.com/s/6pzken4xjnpgmf2/breaches%20%283%29.xlsx%20-%20Blad1.tsv?dl=0", function (data) {
      var myChart = new dimple.chart(svg, data);
      myChart.setBounds(60, 45, 510, 315)
      console.log(data);
-     myChart.addCategoryAxis("x", "Type_of_Breach");
+     var x = myChart.addCategoryAxis("x", "Type_of_Breach");
      myChart.addMeasureAxis("y", "Affected Individuals");
      myChart.addSeries("Type_of_Breach", dimple.plot.bar);
-     myChart.addLegend(200, 10, 380, 20, "right");
      myChart.draw();
+
+     x.shapes.selectAll('text').attr('transform', function () {
+            var transformAttributeValue = d3.select(this).attr('transform');
+
+            if (transformAttributeValue) {
+                transformAttributeValue = transformAttributeValue.replace('rotate(90,', 'rotate(45,');
+            }
+
+            return transformAttributeValue;
+     });
    });
 }
 
