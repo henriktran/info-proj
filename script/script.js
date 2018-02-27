@@ -46,7 +46,7 @@ document.querySelector("#type-filter").addEventListener('change', filterType);
 
 
 function drawBarChart () {
-  var svg = dimple.newSvg("#barChartContainer", 590, 500);
+  var svg = dimple.newSvg("#barChartContainer", 690, 500);
    d3.tsv("https://dl.dropbox.com/s/6pzken4xjnpgmf2/breaches%20%283%29.xlsx%20-%20Blad1.tsv?dl=0", function (data) {
      var myChart = new dimple.chart(svg, data);
      myChart.setBounds(60, 45, 510, 315)

@@ -20,6 +20,18 @@ footer {
 	text-align: center;
 }
 
+.bigger {
+	font-size: 28px;
+}
+
+.big {
+	font-size: 22px;
+}
+
+.medium {
+	font-size: 18px;
+}
+
 #header {
   text-align: center;
   background: transparent;
@@ -176,10 +188,21 @@ footer {
 .dimple-custom-axis-title,
 .dimple-legend-text {
 	fill: #f7f7f7 !important;
+	font-size: 12px !important;
+	font-family: Lato, sans-serif;
 }
 
 .dimple-custom-gridline {
 	stroke: #444 !important;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+}
+
+.center-text {
+	text-align: center;
 }
 
 /*State css */
