@@ -39,19 +39,13 @@ h3 {
 }
 
 .box {
-    background-color: rgb(247, 247, 247);
+	color: #246563;
+	color: #FFF;
 }
 
 .box1 {
-    color: #246563;
-    color: #FFF;
-}
-
-.box2 {
-    background-color: rgb(247, 247, 247);
-    color: #246563;
-    border-radius: 10px;
-    box-shadow: 0px 10px #167083;
+	padding-top: 2rem;
+	background-color: #444;
 }
 
 .header {
@@ -168,7 +162,8 @@ h3 {
 
 	.state{
 		fill: none;
-		stroke: #a9a9a9;
+		/* stroke: #a9a9a9; */
+		stroke: #222;
 		stroke-width: 1;
 	}
 	.state:hover{
