@@ -10,6 +10,7 @@ function drawTheftsPlot() {
     lineChart.addMeasureAxis("y", "Incidents");
     lineChart.addSeries("Type_of_Breach", dimple.plot.line);
     lineChart.addLegend(60, 10, 500, 20, "right");
+    x.overrideMax = 2009;
     lineChart.draw();
   });
 }
