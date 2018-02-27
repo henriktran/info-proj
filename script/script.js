@@ -14,14 +14,18 @@ $('#dissnr').animateNumber({ number: 38 }, timesec*0.4);
 function drawTheftsPlot() {
   d3.tsv("https://dl.dropbox.com/s/m616ci5b4y8dqhb/breaches%20%283%29.xlsx%20-%20Taul1.tsv?dl=0", function (data) {
     lineChart = new dimple.chart(svgLine, data);
-    lineChart .setBounds(60, 30, 505, 305);
+    lineChart.setBounds(60, 70, 605, 305);
+
     var x = lineChart.addCategoryAxis("x", "Year");
     x.addOrderRule("Date");
-    var y = lineChart.addMeasureAxis("y", "Incidents");
-    lineChart.addSeries("Type", dimple.plot.line);
-    lineChart.addLegend(60, 10, 500, 20, "right");
     x.overrideMax = 500;
     x.overrideMin = 0;
+
+    var y = lineChart.addMeasureAxis("y", "Incidents");
+    lineChart.addSeries("Type", dimple.plot.line);
+
+    var legend = lineChart.addLegend(0, 20, 700, 200, "right");
+
     lineChart.draw();
     x.shapes.selectAll('.dimple-custom-axis-line').style('stroke', '#f7f7f7');
     x.shapes.selectAll('.dimple-custom-axis-label').style('fill', '#f7f7f7');
@@ -30,6 +34,9 @@ function drawTheftsPlot() {
     y.shapes.selectAll('.dimple-custom-axis-line').style('stroke', '#f7f7f7');
     y.shapes.selectAll('text').style('fill', '#f7f7f7');
     y.titleShape.style('fill', '#f7f7f7');
+    y.gridlineShapes.selectAll('line').style('stroke', '#444');
+
+    legend.shapes.selectAll('text').style('fill', '#f7f7f7');
   });
 }
 
