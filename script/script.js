@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // add a tooltip
     var tooltip = d3.select("body").append("div")
-        .attr("class", "venntooltip");
+        .attr("class", "tooltip");
 
     // add listeners to all the groups to display tooltip on mouseover
     vennElem.selectAll("g")
