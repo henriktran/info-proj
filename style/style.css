@@ -62,6 +62,7 @@ body {
 .regular {
     text-align: center;
     grid-column: 1/ last;
+    padding-bottom: 85px;
 }
 
 .column {
