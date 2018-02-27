@@ -7,11 +7,18 @@ function drawTheftsPlot() {
     lineChart .setBounds(60, 30, 505, 305);
     var x = lineChart.addCategoryAxis("x", "Year");
     x.addOrderRule("Date");
-    lineChart.addMeasureAxis("y", "Incidents");
+    var y = lineChart.addMeasureAxis("y", "Incidents");
     lineChart.addSeries("Type", dimple.plot.line);
     lineChart.addLegend(60, 10, 500, 20, "right");
     x.overrideMax = 2009;
     lineChart.draw();
+    x.shapes.selectAll('.dimple-custom-axis-line').style('stroke', '#f7f7f7');
+    x.shapes.selectAll('.dimple-custom-axis-label').style('fill', '#f7f7f7');
+    x.titleShape.style('fill', '#f7f7f7');
+
+    y.shapes.selectAll('.dimple-custom-axis-line').style('stroke', '#f7f7f7');
+    y.shapes.selectAll('text').style('fill', '#f7f7f7');
+    y.titleShape.style('fill', '#f7f7f7');
   });
 }
 

@@ -1,5 +1,5 @@
 body {
-    background-color: #3AAFA9;
+    background: #222;
     font-family: 'Lato', sans-serif;
     color: rgb(46, 46, 46);
 	margin: 0px;
@@ -12,8 +12,8 @@ h3 {
 
 #header {
   text-align: center;
-  background: #3AAFA9;
-  color: #1f3138;
+  background: transparent;
+  color: #f7f7f7;
   font-size: 35px;
 }
 
@@ -21,10 +21,10 @@ h3 {
   border: 0;
   height: 1.65px;
   width: 85%;
-  background-image: -webkit-linear-gradient(left, #3AAFA9, #1f3138, #3AAFA9);
-  background-image: -moz-linear-gradient(left, #3AAFA9, #1f3138, #3AAFA9);
-  background-image: -ms-linear-gradient(left, #3AAFA9, #1f3138, #3AAFA9);
-  background-image: -o-linear-gradient(left, #3AAFA9, #1f3138, #3AAFA9);
+  background-image: -webkit-linear-gradient(left, #1f3138, #f7f7f7, #1f3138);
+  background-image: -moz-linear-gradient(left, #1f3138, #f7f7f7, #1f3138);
+  background-image: -ms-linear-gradient(left, #1f3138, #f7f7f7, #1f3138);
+  background-image: -o-linear-gradient(left, #1f3138, #f7f7f7, #1f3138);
 }
 
 #poster {
@@ -34,8 +34,7 @@ h3 {
 }
 
 #stats {
-  background-color: rgb(247, 247, 247);
-  color: #246563;
+  color: #f7f7f7;
   font-size: 28px;
 }
 
@@ -44,17 +43,15 @@ h3 {
 }
 
 .box1 {
-    background-color: rgb(247, 247, 247);
     color: #246563;
-    border-radius: 10px;
-    box-shadow: 0px 10px #2B7A78;
+    color: #FFF;
 }
 
 .box2 {
     background-color: rgb(247, 247, 247);
     color: #246563;
     border-radius: 10px;
-    box-shadow: 0px 10px #2B7A78;
+    box-shadow: 0px 10px #167083;
 }
 
 .header {
@@ -82,12 +79,13 @@ h3 {
 .three_col {
   padding-top: 15px;
   float: left;
-  width: 33%;
+  width: 16.6666%;
 }
 
 .numberText {
   font-size: 25px;
   margin-top: -10px;
+  color: #ed4141;
 }
 
 .numberText {
