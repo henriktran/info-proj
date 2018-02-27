@@ -6,8 +6,18 @@ body {
 	padding: 0 ;
 }
 
-h3 {
+h2 {
 	font-size: 28px;
+}
+
+h3 {
+	font-size: 22px;
+}
+
+footer {
+	font-size: 12px;
+	padding-top: 16px;
+	text-align: center;
 }
 
 #header {
@@ -21,10 +31,11 @@ h3 {
   border: 0;
   height: 1.65px;
   width: 85%;
-  background-image: -webkit-linear-gradient(left, #1f3138, #f7f7f7, #1f3138);
-  background-image: -moz-linear-gradient(left, #1f3138, #f7f7f7, #1f3138);
-  background-image: -ms-linear-gradient(left, #1f3138, #f7f7f7, #1f3138);
-  background-image: -o-linear-gradient(left, #1f3138, #f7f7f7, #1f3138);
+  background-image: -webkit-linear-gradient(left, transparent, #f7f7f7, transparent);
+  background-image: -moz-linear-gradient(left, transparent, #f7f7f7, transparent);
+  background-image: -ms-linear-gradient(left, transparent, #f7f7f7, transparent);
+  background-image: -o-linear-gradient(left, transparent, #f7f7f7, transparent);
+  background-image: linear-gradient(left, transparent, #f7f7f7, transparent);
 }
 
 #poster {
@@ -36,6 +47,7 @@ h3 {
 #stats {
   color: #f7f7f7;
   font-size: 28px;
+  text-align: center;
 }
 
 .box {
@@ -48,13 +60,21 @@ h3 {
 	background-color: #444;
 }
 
+#map-box {
+	text-align: center;
+}
+
 .header {
     text-align: center;
     grid-column: 1/ last;
 }
 
+.regular h2,
+.regular h3 {
+	text-align: center;
+}
+
 .regular {
-    text-align: center;
     grid-column: 1/ last;
     padding-bottom: 85px;
 }
@@ -62,6 +82,10 @@ h3 {
 .column {
     float: left;
     width: 50%;
+}
+
+.column p {
+	padding: 2em 4em;
 }
 
 .row:after {

@@ -15,8 +15,10 @@
 		</div>
 
 		<div id="stats" class="box regular">
-			<h2>A total of
-				<span style="color: #ed4141;" id="totalnr">0</span> breaches between 2009 - 2013. </h2>
+			<h2>
+				A total of
+				<span class="numberText" id="totalnr">0</span> breaches between 2009–2013.
+			</h2>
 			<div class="three_col">
 				<img src="images/theftwhite.svg" width="150px">
 				<p>Thefts</p>
@@ -61,10 +63,10 @@
 			</div>
 		</div>
 
-		<div class="box box1 regular">
-
+		<div class="box box1 regular" id="map-box">
 			<h2>Number of breaches per state from 2009 to 2013</h2>
-			<p>Hover to show details!</p>
+			<p>Hover over the states to show details!</p>
+
 			<div id="statesContainer">
 				<div id="tooltip" class="tooltip"></div>
 				<!-- div to hold tooltip. -->
@@ -83,19 +85,20 @@
 
 
 		<div class="box regular">
-			<h3>Types of attacks and target items</h3>
+			<h2>Types of attacks and target items</h2>
+
 			<div class="column">
-				<h2>Stolen items</h2>
-				<p style="text-align: left; padding: 0 4em 0 4em;">Visualization of the items stolen and in how many cases that has happened. During some cases, several items were stolen.</p>
+				<h3>Stolen items</h3>
+				<p>Visualization of the items stolen and in how many cases that has happened. During some cases, several items were stolen.</p>
 				<div id="venn"></div>
 			</div>
 
 
 			<div class="column">
-				<h2>Behaviour over the years</h2>
+				<h3>Behaviour over the years</h3>
 				<p>Visualization of the different types of breaches over the years 2009 - 2013.</p>
-				<div id="theftsContainer">
-				</div>
+				<div id="theftsContainer"></div>
+
 				<label for="type-filter">Filter by type of Incident: </label>
 				<select name="" id="type-filter">
 					<option value="Type">All</option>
@@ -107,19 +110,27 @@
 					<option value="Other / Unknown">Other / Unknown</option>
 				</select>
 			</div>
-
-			<div>
-				<h2> Flirre Fixar </h2>
-				<div id="barChartContainer">
-				</div>
-			</div>
-
-
 		</div>
 
+		<div class="box box1 regular">
+			<h2>Affected individuals</h2>
+
+			<div class="column">
+				<p>
+					These data breaches affect many people. The chart on the right show the total number
+					of affected people per breach type.
+				</p>
+			</div>
+
+			<div class="column">
+				<div id="barChartContainer"></div>
+			</div>
+		</div>
 
 	</div>
-	</div>
+			<footer class="box">
+				<p>Data source: <a href="https://raw.github.com/vincentarelbundock/Rdatasets/master/csv/Ecdat/HHSCyberSecurityBreaches.csv">https://raw.github.com/vincentarelbundock/Rdatasets/master/csv/Ecdat/HHSCyberSecurityBreaches.csv</a></p>
+			</footer>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
