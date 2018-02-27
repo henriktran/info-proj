@@ -21,6 +21,13 @@ function drawTheftsPlot() {
     x.overrideMax = 500;
     x.overrideMin = 0;
 
+    lineChart.assignColor('Theft', '#1b9e77');
+    lineChart.assignColor('Loss', '#d95f02');
+    lineChart.assignColor('Other / Unknown', '#7570b3');
+    lineChart.assignColor('Hacking/IT Incident', '#e7298a');
+    lineChart.assignColor('Unauthorized Access/Disclosure', '#66a61e');
+    lineChart.assignColor('Improper Disposal', '#e6ab02');
+
     lineChart.addMeasureAxis("y", "Incidents");
     lineChart.addSeries("Type", dimple.plot.line);
 
@@ -46,26 +53,38 @@ document.querySelector("#type-filter").addEventListener('change', filterType);
 
 
 function drawBarChart () {
-  var svg = dimple.newSvg("#barChartContainer", 690, 500);
-   d3.tsv("https://dl.dropbox.com/s/6pzken4xjnpgmf2/breaches%20%283%29.xlsx%20-%20Blad1.tsv?dl=0", function (data) {
-     var myChart = new dimple.chart(svg, data);
-     myChart.setBounds(60, 45, 510, 315)
-     console.log(data);
-     var x = myChart.addCategoryAxis("x", "Type_of_Breach");
-     myChart.addMeasureAxis("y", "Affected Individuals");
-     myChart.addSeries("Type_of_Breach", dimple.plot.bar);
-     myChart.draw();
+    var svg = dimple.newSvg("#barChartContainer", 690, 500);
 
-     x.shapes.selectAll('text').attr('transform', function () {
-            var transformAttributeValue = d3.select(this).attr('transform');
+    d3.tsv("https://dl.dropbox.com/s/6pzken4xjnpgmf2/breaches%20%283%29.xlsx%20-%20Blad1.tsv?dl=0", function (data) {
+        var myChart = new dimple.chart(svg, data);
+        myChart.setBounds(60, 45, 510, 315)
+        console.log(data);
+        var x = myChart.addCategoryAxis("x", "Type_of_Breach");
+        x.colors = ['red', 'yellow'];
+        myChart.addMeasureAxis("y", "Affected Individuals");
+        myChart.addSeries("Type_of_Breach", dimple.plot.bar);
 
-            if (transformAttributeValue) {
-                transformAttributeValue = transformAttributeValue.replace('rotate(90,', 'rotate(45,');
-            }
+        myChart.assignColor("Theft", "red");
 
-            return transformAttributeValue;
-     });
-   });
+        myChart.assignColor('Theft', '#1b9e77');
+        myChart.assignColor('Loss', '#d95f02');
+        myChart.assignColor('Other / Unknown', '#7570b3');
+        myChart.assignColor('Hacking/IT Incident', '#e7298a');
+        myChart.assignColor('Unauthorized Access/Disclosure', '#66a61e');
+        myChart.assignColor('Improper Disposal', '#e6ab02');
+
+        myChart.draw();
+
+        x.shapes.selectAll('text').attr('transform', function () {
+                var transformAttributeValue = d3.select(this).attr('transform');
+
+                if (transformAttributeValue) {
+                    transformAttributeValue = transformAttributeValue.replace('rotate(90,', 'rotate(45,');
+                }
+
+                return transformAttributeValue;
+        });
+    });
 }
 
 var damaged_csv = "https://dl.dropbox.com/s/7koek9msjpybdgq/infovisdata.csv?dl=0";
