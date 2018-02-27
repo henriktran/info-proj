@@ -1,6 +1,8 @@
 var lineChart, test;
 var svgLine = dimple.newSvg("#theftsContainer", 590, 400);
 
+$('#totalnr').animateNumber({ number: 977 }, 20000);
+
 function drawTheftsPlot() {
   d3.tsv("https://dl.dropbox.com/s/m616ci5b4y8dqhb/breaches%20%283%29.xlsx%20-%20Taul1.tsv?dl=0", function (data) {
     lineChart = new dimple.chart(svgLine, data);
