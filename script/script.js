@@ -6,12 +6,12 @@ $('#totalnr').animateNumber({ number: 977 }, 3000);
 function drawTheftsPlot() {
   d3.tsv("https://dl.dropbox.com/s/m616ci5b4y8dqhb/breaches%20%283%29.xlsx%20-%20Taul1.tsv?dl=0", function (data) {
     lineChart = new dimple.chart(svgLine, data);
-    lineChart .setBounds(60, 30, 505, 305);
+    lineChart .setBounds(60, 70, 505, 305);
     var x = lineChart.addCategoryAxis("x", "Year");
     x.addOrderRule("Date");
     var y = lineChart.addMeasureAxis("y", "Incidents");
     lineChart.addSeries("Type", dimple.plot.line);
-    lineChart.addLegend(60, 10, 500, 20, "right");
+    lineChart.addLegend(0, 10, 700, 200, "right");
     x.overrideMax = 500;
     x.overrideMin = 0;
     lineChart.draw();
