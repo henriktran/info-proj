@@ -2,13 +2,13 @@ var lineChart, test;
 var svgLine = dimple.newSvg("#theftsContainer", 590, 400);
 
 function drawTheftsPlot() {
-  d3.tsv("https://dl.dropbox.com/s/9lq0tv2oj3af05q/Breaches_per_year%20-%20Blad1%20%281%29.tsv?dl=0", function (data) {
+  d3.tsv("https://dl.dropbox.com/s/m616ci5b4y8dqhb/breaches%20%283%29.xlsx%20-%20Taul1.tsv?dl=0", function (data) {
     lineChart = new dimple.chart(svgLine, data);
     lineChart .setBounds(60, 30, 505, 305);
     var x = lineChart.addCategoryAxis("x", "Year");
     x.addOrderRule("Date");
     lineChart.addMeasureAxis("y", "Incidents");
-    lineChart.addSeries("Type_of_Breach", dimple.plot.line);
+    lineChart.addSeries("Type", dimple.plot.line);
     lineChart.addLegend(60, 10, 500, 20, "right");
     x.overrideMax = 2009;
     lineChart.draw();
@@ -17,9 +17,9 @@ function drawTheftsPlot() {
 
 function filterType(event) {
     lineChart.svg.selectAll('*').remove();
-    d3.tsv("https://dl.dropbox.com/s/9lq0tv2oj3af05q/Breaches_per_year%20-%20Blad1%20%281%29.tsv?dl=0", function (data) {
-    if (event.target.value !== 'Type_of_Breach') {
-      data = dimple.filterData(data, "Type_of_Breach", event.target.value);
+    d3.tsv("https://dl.dropbox.com/s/m616ci5b4y8dqhb/breaches%20%283%29.xlsx%20-%20Taul1.tsv?dl=0", function (data) {
+    if (event.target.value !== 'Type') {
+      data = dimple.filterData(data, "Type", event.target.value);
     };
     lineChart = new dimple.chart(svgLine, data);
     lineChart.setBounds(60, 30, 505, 305);
