@@ -1,7 +1,15 @@
 var lineChart, test;
 var svgLine = dimple.newSvg("#theftsContainer", 590, 400);
+var timesec = 3000;
 
-$('#totalnr').animateNumber({ number: 977 }, 3000);
+$('#totalnr').animateNumber({ number: 977 }, timesec);
+$('#theftnr').animateNumber({ number: 541 }, timesec*0.554);
+$('#accessnr').animateNumber({ number: 154 }, timesec*0.4);
+$('#othersnr').animateNumber({ number: 94 }, timesec*0.4);
+$('#lossnr').animateNumber({ number: 86 }, timesec*0.4);
+$('#hacknr').animateNumber({ number: 64 }, timesec*0.4);
+$('#dissnr').animateNumber({ number: 38 }, timesec*0.4);
+
 
 function drawTheftsPlot() {
   d3.tsv("https://dl.dropbox.com/s/m616ci5b4y8dqhb/breaches%20%283%29.xlsx%20-%20Taul1.tsv?dl=0", function (data) {
