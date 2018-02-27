@@ -10,24 +10,19 @@ function drawTheftsPlot() {
     lineChart.addMeasureAxis("y", "Incidents");
     lineChart.addSeries("Type", dimple.plot.line);
     lineChart.addLegend(60, 10, 500, 20, "right");
-    x.overrideMax = 2009;
+    x.overrideMax = 500;
+    x.overrideMin = 0;
     lineChart.draw();
   });
 }
 
 function filterType(event) {
-    lineChart.svg.selectAll('*').remove();
     d3.tsv("https://dl.dropbox.com/s/m616ci5b4y8dqhb/breaches%20%283%29.xlsx%20-%20Taul1.tsv?dl=0", function (data) {
     if (event.target.value !== 'Type') {
-      data = dimple.filterData(data, "Type", event.target.value);
-    };
-    lineChart = new dimple.chart(svgLine, data);
-    lineChart.setBounds(60, 30, 505, 305);
-    var x = lineChart.addCategoryAxis("x", "Year");
-    x.addOrderRule("Date");
-    lineChart.addMeasureAxis("y", "Incidents");
-    lineChart.addSeries(event.target.value, dimple.plot.line);
-    lineChart.addLegend(60, 10, 500, 20, "right");
+      lineChart.data = dimple.filterData(data, "Type", event.target.value);
+    } else {
+      lineChart.data = data;
+    }
     lineChart.draw(750);
     });
 }
