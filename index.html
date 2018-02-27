@@ -1,106 +1,121 @@
-    <html>
+<html>
 
-    <head>
+<head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="style/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    </head>
+</head>
 
-    <body>
+<body>
 	<div id="poster">
 
-	    <div id="header" class="box header">
+		<div id="header" class="box header">
 			<h1>Data Security Breaches In US Health Care</h1>
 			<hr id="sepLine" />
-	    </div>
+		</div>
 
-	    <div id="stats" class="box regular">
-	    	    	<h2>A total of <span style="color: #ed4141;" id="totalnr">0</span> breaches between 2009 - 2013. </h2>
+		<div id="stats" class="box regular">
+			<h2>A total of
+				<span style="color: #ed4141;" id="totalnr">0</span> breaches between 2009 - 2013. </h2>
 			<div class="three_col">
 				<img src="images/theftwhite.svg" width="150px">
 				<p>Thefts</p>
-				<p class="numberText" id="thefts"> <span id="theftnr">0</span></p>
+				<p class="numberText" id="thefts">
+					<span id="theftnr">0</span>
+				</p>
 			</div>
-      <div class="three_col">
-        <img src="images/unauthorizedaccesswhite.svg" width="150px">
-        <p>Unauthorized Access</p>
-        <p class="numberText" id="others"><span id="accessnr">0</span></p>
-      </div>
-      <div class="three_col">
-        <img src="images/otherwhite.svg" width="150px">
-        <p>Others</p>
-        <p class="numberText" id="others"><span id="othersnr">0</span></p>
-      </div>
-      <div class="three_col">
-        <img src="images/losswhite.svg" width="150px">
-        <p>Loss</p>
-        <p class="numberText" id="others"><span id="lossnr">0</span></p>
-      </div>
+			<div class="three_col">
+				<img src="images/unauthorizedaccesswhite.svg" width="150px">
+				<p>Unauthorized Access</p>
+				<p class="numberText" id="others">
+					<span id="accessnr">0</span>
+				</p>
+			</div>
+			<div class="three_col">
+				<img src="images/otherwhite.svg" width="150px">
+				<p>Others</p>
+				<p class="numberText" id="others">
+					<span id="othersnr">0</span>
+				</p>
+			</div>
+			<div class="three_col">
+				<img src="images/losswhite.svg" width="150px">
+				<p>Loss</p>
+				<p class="numberText" id="others">
+					<span id="lossnr">0</span>
+				</p>
+			</div>
 			<div class="three_col">
 				<img src="images/hackingwhite.svg" width="150px">
 				<p>Hacking/IT Incidents</p>
-				<p class="numberText" id="hacking_incidents"><span id="hacknr">0</span></p>
+				<p class="numberText" id="hacking_incidents">
+					<span id="hacknr">0</span>
+				</p>
 			</div>
 			<div class="three_col">
 				<img src="images/disposalwhite.svg" width="150px">
 				<p>Disposal</p>
-				<p class="numberText" id="others"><span id="dissnr">0</span></p>
+				<p class="numberText" id="others">
+					<span id="dissnr">0</span>
+				</p>
 			</div>
-	    </div>
+		</div>
 
-	    <div class="box box1 regular">
+		<div class="box box1 regular">
 
 			<h2>Number of breaches per state from 2009 to 2013</h2>
 			<p>Hover to show details!</p>
 			<div id="statesContainer">
-				<div id="tooltip" class="tooltip"></div><!-- div to hold tooltip. -->
-				<svg width="960" height="600" id="statesvg" ></svg> <!-- svg to hold the map. -->
+				<div id="tooltip" class="tooltip"></div>
+				<!-- div to hold tooltip. -->
+				<svg width="960" height="600" id="statesvg"></svg>
+				<!-- svg to hold the map. -->
 			</div>
 			<div class="gradient">
-  				<div class="labels">
-    				<div class="label min">1</div>
-    				<div class="label median">55</div>
-    				<div class="label max">110</div>
-  				</div>
-  				<div class="swatches"></div>
+				<div class="labels">
+					<div class="label min">1</div>
+					<div class="label median">55</div>
+					<div class="label max">110</div>
+				</div>
+				<div class="swatches"></div>
 			</div>
-	    </div>
-
-
-	    <div class="box regular">
-		<h3>Types of attacks and target items</h3>
-		<div class="column">
-		    <h2>Stolen items</h2>
-		    <p style="text-align: left; padding: 0 4em 0 4em;">Visualization of the items stolen and in how many cases that has happened. During some cases, several items were stolen.</p>
-		    <div id="venn"></div>
 		</div>
 
 
-		<div class="column">
-		    <h2>Behaviour over the years</h2>
-		    <p>Visualization of the different types of breaches over the years 2009 - 2013.</p>
-        <div id="theftsContainer">
-        </div>
-        <label for="type-filter">Filter by type of Incident: </label>
-        <select name="" id="type-filter">
-            <option value="Type">All</option>
-            <option value="Hacking/IT Incident">Hacking/IT Incident</option>
-            <option value="Theft">Theft</option>
-            <option value="Loss">Loss</option>
-            <option value="Improper Disposal">Improper Disposal</option>
-            <option value="Unauthorized Access/Disclosure">Unauthorized Access/Disclosure</option>
-            <option value="Other / Unknown">Other / Unknown</option>
-        </select>
+		<div class="box regular">
+			<h3>Types of attacks and target items</h3>
+			<div class="column">
+				<h2>Stolen items</h2>
+				<p style="text-align: left; padding: 0 4em 0 4em;">Visualization of the items stolen and in how many cases that has happened. During some cases, several items were stolen.</p>
+				<div id="venn"></div>
+			</div>
+
+
+			<div class="column">
+				<h2>Behaviour over the years</h2>
+				<p>Visualization of the different types of breaches over the years 2009 - 2013.</p>
+				<div id="theftsContainer">
+				</div>
+				<label for="type-filter">Filter by type of Incident: </label>
+				<select name="" id="type-filter">
+					<option value="Type">All</option>
+					<option value="Hacking/IT Incident">Hacking/IT Incident</option>
+					<option value="Theft">Theft</option>
+					<option value="Loss">Loss</option>
+					<option value="Improper Disposal">Improper Disposal</option>
+					<option value="Unauthorized Access/Disclosure">Unauthorized Access/Disclosure</option>
+					<option value="Other / Unknown">Other / Unknown</option>
+				</select>
+			</div>
+
+			<div>
+				<h2> Flirre Fixar </h2>
+				<div id="barChartContainer">
+				</div>
+			</div>
+
+
 		</div>
-
-    <div>
-      <h2> Flirre Fixar </h2>
-      <div id="barChartContainer">
-      </div>
-    </div>
-
-
-		</div
 
 
 	</div>
@@ -113,5 +128,6 @@
 	<script src="script/venn.min.js"></script>
 	<script src="script/script.js"></script>
 
-    </body>
+</body>
+
 </html>
