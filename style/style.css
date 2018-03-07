@@ -3,7 +3,7 @@ body {
     font-family: 'Lato', sans-serif;
     color: rgb(46, 46, 46);
 	margin: 0px;
-	padding: 0 ;
+	padding: 0px ;
 	line-height: 1.5;
 }
 
@@ -75,7 +75,7 @@ footer a:visited {
 
 .box1 {
 	padding-top: 2rem;
-	background-color: #444;
+	background-color: #222;
 }
 
 #map-box {
@@ -120,10 +120,16 @@ footer a:visited {
 
 .numberText {
   margin-top: -10px;
+  margin-bottom: -20px;
   color: #ed4141;
   font-size: 50px;
 }
 
+.description {
+  font-size: 18px;
+  padding: 20px;
+  margin-bottom: 50px;
+}
 
 .gradient {
 	max-width: 65%;
