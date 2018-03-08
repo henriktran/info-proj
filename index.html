@@ -8,11 +8,19 @@
 
 <body>
 	<div id="poster">
-
 		<div id="header" class="box header">
 			<h1>Data Security Breaches In US Health Care</h1>
 			<p style="font-size:44px;">2009–2013</p>
 			<hr id="sepLine" />
+		</div>
+
+
+
+		<div class="navbar">
+  <a href="#poster">Home</a>
+  <a href="#affected-individuals">Affected Individuals</a>
+  <a href="#types-of-attack">Types of attacks</a>
+	<a href="#map-box">Breaches per state</a>
 		</div>
 
 		<div id="stats" class="box regular">
@@ -82,9 +90,8 @@
 						<hr id="sepLine" />
 		</div>
 
-		<div class="box box1 regular">
+		<div class="box box2 regular" id="affected-individuals">
 			<h2>Affected individuals</h2>
-
 			<div class="column">
 				<p class="big">
 					These data breaches affect many people. The chart on the right show the total number
@@ -95,11 +102,11 @@
 			<div class="column">
 				<div id="barChartContainer"></div>
 			</div>
+						<hr id="sepLine" />
 		</div>
 
-		<div class="box regular">
+		<div class="box regular" id="types-of-attack">
 			<h2>Types of attacks and target items</h2>
-
 			<div class="column">
 				<h3>Stolen items</h3>
 				<p class="medium">Visualization of the items stolen and in how many cases that has happened. During some cases, several items were stolen.</p>
@@ -133,9 +140,9 @@
 			</div>
 		</div>
 
-		<div class="box box1 regular" id="map-box">
-						<hr id="sepLine" />
-			<h2>Number of breaches per state</h2>
+		<div class="box box2 regular" id="map-box">
+<hr id="sepLine" />
+			<h2>Number of breaches per state per capita</h2>
 			<p>Hover over the states to show details!</p>
 
 			<div id="statesContainer">
@@ -155,7 +162,6 @@
 		</div>
 
 	</div>
-
 	<footer class="box">
 		<p>Data source: <a href="https://raw.github.com/vincentarelbundock/Rdatasets/master/csv/Ecdat/HHSCyberSecurityBreaches.csv">https://raw.github.com/vincentarelbundock/Rdatasets/master/csv/Ecdat/HHSCyberSecurityBreaches.csv</a></p>
 	</footer>

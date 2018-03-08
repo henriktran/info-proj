@@ -1,7 +1,7 @@
 body {
-    background: #222;
+      background: #2a3645;
     font-family: 'Lato', sans-serif;
-    color: rgb(46, 46, 46);
+    color: #2e2e2e;
 	margin: 0px;
 	padding: 0px ;
 	line-height: 1.5;
@@ -23,7 +23,7 @@ footer {
 
 footer a,
 footer a:visited {
-	color: #702424;
+	color: #C44536;
 }
 
 .bigger {
@@ -43,6 +43,34 @@ footer a:visited {
   background: transparent;
   color: #f7f7f7;
   font-size: 35px;
+}
+
+.outer-box {
+  display: block;
+
+}
+.outer-box img {
+  height: auto;
+}
+.outer-box .inner-box {
+  background: #000e18;
+  height: 75%;
+  width: 85%;
+  opacity: 0;
+  top: 50%;
+  left: 7.5%;
+  position: absolute;
+  padding: 0;
+  transition: opacity .5s;
+}
+.outer-box .inner-box p {
+  color: #fff;
+  line-height: 150px;
+  text-align: center;
+}
+.outer-box:hover .inner-box {
+  opacity: .95;
+  transition: opacity .5s;
 }
 
 #sepLine {
@@ -69,13 +97,18 @@ footer a:visited {
 }
 
 .box {
-	color: #246563;
-	color: #FFF;
+  padding-top: 40px;
+	color: #f7f7f7;
 }
 
 .box1 {
-	padding-top: 2rem;
-	background-color: #222;
+	padding-top: 40px;
+  	background-color: #2a3645;
+}
+
+.box2 {
+  background-color: #2a3645;
+  padding-top: 40px;
 }
 
 #map-box {
@@ -86,6 +119,39 @@ footer a:visited {
     text-align: center;
     grid-column: 1/ last;
 }
+/* The navigation bar */
+.navbar {
+    overflow: hidden;
+    background-color: #374454;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0px; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    border-style: solid;
+    border-width: 0px 0px 0px 10px;
+    border-color: #C44536;
+}
+
+/* Links inside the navbar */
+.navbar a {
+    float: left;
+    display: block;
+    color: #f7f7f7;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+    background: #C44536;
+    color: #f7f7f7;
+}
+
+/* Main content */
+.main {
+    margin-top: 30px; /* Add a top margin to avoid content overlay */
+}
+
 
 .regular h2,
 .regular h3 {
@@ -121,7 +187,7 @@ footer a:visited {
 .numberText {
   margin-top: -10px;
   margin-bottom: -20px;
-  color: #ed4141;
+  color: #C44536;
   font-size: 50px;
 }
 

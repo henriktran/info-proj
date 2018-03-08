@@ -190,7 +190,8 @@ d3.csv(stateCSV, function(data) {
 	    theft = d["Theft"],
 	    disclosure = d["Unauthorized Access/Disclosure"],
 	    sum = d["Totalsumma"];
-	data[state]={hacking:hacking, improper:improper, loss:loss, other:other, theft:theft, disclosure:disclosure,  sum:sum, color:d3.interpolate("#ffffcc", "#800026")((sum)/75)};
+      population = d["Population"]
+	data[state]={hacking:hacking, improper:improper, loss:loss, other:other, theft:theft, disclosure:disclosure,  sum:sum, population:population, color:d3.interpolate("#ffffcc", "#800026")((sum)/(population)/0.00001)};
     }),
     loaded_stateData = data;
     uStates.draw("#statesvg", data, tooltipHtml);
